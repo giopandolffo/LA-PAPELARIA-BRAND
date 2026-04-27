@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Creativa · La Papelería</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── BRAND TOKENS (colores corporativos reales) ─ */
+    :root {
+      --blue:       #7AAFC8;
+      --blue-light: #B8D5E6;
+      --blue-dark:  #4D849E;
+      --khaki:      #9E8C58;
+      --khaki-light:#C8BA94;
+      --khaki-pale: #EDE8D8;
+      --crimson:    #C2213A;
+      --crimson-light: #E8A0AC;
+      --crimson-pale:  #F7EAEC;
+      --dark:       #1A1208;
+      --dark-mid:   #2C2416;
+
+      --bg:         #FAFAF7;
+      --bg-alt:     #F4F0E8;
+      --text:       #1A1208;
+      --text-mid:   #4A4035;
+      --text-muted: #7A7060;
+      --border:     #D8D0C2;
+      --border-light: #ECE8DE;
+      --white:      #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────── */
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    section {
+      padding: 5.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+    section:last-child { border-bottom: none; }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .d1 { transition-delay: 0.05s; }
+    .d2 { transition-delay: 0.12s; }
+    .d3 { transition-delay: 0.19s; }
+    .d4 { transition-delay: 0.26s; }
+    .d5 { transition-delay: 0.33s; }
+    .d6 { transition-delay: 0.40s; }
+
+    /* ─── SECTION LABEL ──────────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5.5rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .section-title-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .section-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────── */
+    .site-header {
+      background: var(--dark);
+      color: #F5EDD8;
+      padding: 4.5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative mesh */
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 5% 90%, rgba(194,33,58,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 95% 10%, rgba(122,175,200,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 60% 50%, rgba(158,140,88,0.10) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* Animated shimmer line across header */
+    .site-header::after {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%   { left: -60%; }
+      100% { left: 120%; }
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo-wrap {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(122,175,200,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem;
+      flex-shrink: 0;
+      animation: logoFadeIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+      box-shadow: 0 0 0 0 rgba(122,175,200,0.3);
+      transition: box-shadow 0.4s;
+    }
+    .logo-wrap:hover {
+      box-shadow: 0 0 0 8px rgba(122,175,200,0.12);
+    }
+    @keyframes logoFadeIn {
+      from { opacity: 0; transform: scale(0.88) rotate(-4deg); }
+      to   { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    .header-text { animation: headerSlide 0.8s 0.15s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes headerSlide {
+      from { opacity: 0; transform: translateX(24px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .header-kicker {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson-light);
+      margin-bottom: 0.8rem;
+    }
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.12;
+      color: #F5EDD8;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .header-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: rgba(245,237,216,0.55);
+      margin-bottom: 2.25rem;
+    }
+    .header-rule {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--crimson), var(--blue));
+      margin-bottom: 1.75rem;
+    }
+    .header-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label {
+      font-size: 0.53rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+    }
+    .meta-value {
+      font-size: 0.82rem;
+      color: rgba(245,237,216,0.8);
+      font-weight: 300;
+    }
+
+    /* Color band under header */
+    .header-band {
+      height: 4px;
+      background: linear-gradient(90deg,
+        var(--blue) 0%, var(--blue) 25%,
+        var(--khaki) 25%, var(--khaki) 50%,
+        var(--crimson) 50%, var(--crimson) 75%,
+        var(--dark) 75%, var(--dark) 100%);
+      width: 100%;
+      animation: bandReveal 1.2s 0.4s cubic-bezier(0.22,1,0.36,1) both;
+      transform-origin: left;
+    }
+    @keyframes bandReveal {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* ─── INTRO ──────────────────────────────────────── */
+    .intro-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text);
+      border-left: 3px solid var(--crimson);
+      padding-left: 1.75rem;
+      margin: 2.5rem 0 2rem;
+      max-width: 580px;
+    }
+    .intro-body {
+      max-width: 650px;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+    }
+
+    /* ─── DIAGNÓSTICO ────────────────────────────────── */
+    .diag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .diag-col {
+      padding: 2.75rem;
+      background: var(--white);
+      transition: background 0.3s;
+    }
+    .diag-col.right { background: var(--bg); }
+    .diag-col:hover { background: #FDFCFA; }
+
+    .diag-col-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .diag-indicator {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .diag-indicator.green { background: var(--blue); }
+    .diag-indicator.amber { background: var(--crimson); }
+
+    .diag-col-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .diag-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .diag-list li {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .diag-col .diag-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 0.75rem;
+    }
+    .diag-col.right .diag-list li::before { color: var(--crimson); }
+
+    /* ─── ENTREGABLES ────────────────────────────────── */
+    .entregables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2.75rem 2.25rem;
+      position: relative;
+      transition: background 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+      display: flex;
+      flex-direction: column;
+      cursor: default;
+    }
+    .card:hover {
+      background: var(--bg);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(26,18,8,0.1);
+      z-index: 2;
+    }
+
+    /* Top accent bar per card */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card:nth-child(1)::before { background: var(--crimson); }
+    .card:nth-child(2)::before { background: var(--blue); }
+    .card:nth-child(3)::before { background: var(--khaki); }
+    .card:nth-child(4)::before { background: var(--dark); }
+
+    .card-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+      transition: color 0.3s;
+    }
+    .card:nth-child(1):hover .card-num { color: var(--crimson-light); }
+    .card:nth-child(2):hover .card-num { color: var(--blue-light); }
+    .card:nth-child(3):hover .card-num { color: var(--khaki-light); }
+    .card:nth-child(4):hover .card-num { color: var(--border); }
+
+    .card-eyebrow {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    .card-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .card-rule {
+      width: 30px;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.25rem;
+      transition: width 0.4s, background 0.3s;
+    }
+    .card:hover .card-rule { width: 50px; }
+    .card:nth-child(1):hover .card-rule { background: var(--crimson); }
+    .card:nth-child(2):hover .card-rule { background: var(--blue); }
+    .card:nth-child(3):hover .card-rule { background: var(--khaki); }
+    .card:nth-child(4):hover .card-rule { background: var(--dark); }
+
+    .card-body {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+    .card-price-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+      margin-top: auto;
+    }
+    .card-price-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .card-price span {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── PRESUPUESTO ────────────────────────────────── */
+    .budget-table-wrap {
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .budget-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .budget-table thead tr { background: var(--dark); color: #F5EDD8; }
+    .budget-table thead th {
+      padding: 1.1rem 1.75rem;
+      text-align: left;
+      font-weight: 400;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .budget-table thead th:last-child { text-align: right; }
+
+    .budget-table tbody tr {
+      border-bottom: 1px solid var(--border-light);
+      transition: background 0.2s;
+    }
+    .budget-table tbody tr:hover { background: var(--bg-alt); }
+    .budget-table tbody td { padding: 1.15rem 1.75rem; color: var(--text-muted); }
+    .budget-table tbody td:first-child { color: var(--text); font-weight: 400; }
+    .budget-table tbody td:last-child {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .budget-table tfoot tr { background: var(--crimson); }
+    .budget-table tfoot td {
+      padding: 1.4rem 1.75rem;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+    .budget-table tfoot td:last-child {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .budget-note {
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .budget-note::before {
+      content: '†';
+      color: var(--khaki);
+      flex-shrink: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    /* ─── PLAZOS ─────────────────────────────────────── */
+    .timeline { position: relative; display: flex; flex-direction: column; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 108px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        var(--blue) 0%,
+        var(--khaki) 33%,
+        var(--crimson) 66%,
+        var(--dark) 100%);
+      opacity: 0.35;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 1.85rem 0;
+      border-bottom: 1px dashed var(--border-light);
+      position: relative;
+      transition: background 0.25s;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-item:hover { background: rgba(122,175,200,0.04); }
+
+    .timeline-duration { text-align: right; padding-right: 2.5rem; padding-top: 0.1rem; }
+    .timeline-weeks {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .timeline-item:nth-child(1) .timeline-weeks { color: var(--blue-dark); }
+    .timeline-item:nth-child(2) .timeline-weeks { color: var(--khaki); }
+    .timeline-item:nth-child(3) .timeline-weeks { color: var(--crimson); }
+    .timeline-item:nth-child(4) .timeline-weeks { color: var(--dark); }
+
+    .timeline-weeks-label {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 108px;
+      top: 2rem;
+      transform: translateX(-50%);
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1.5px currentColor;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-item:hover .timeline-dot { transform: translateX(-50%) scale(1.4); }
+    .timeline-item:nth-child(1) .timeline-dot { background: var(--blue); color: var(--blue); }
+    .timeline-item:nth-child(2) .timeline-dot { background: var(--khaki); color: var(--khaki); }
+    .timeline-item:nth-child(3) .timeline-dot { background: var(--crimson); color: var(--crimson); }
+    .timeline-item:nth-child(4) .timeline-dot { background: var(--dark); color: var(--dark); }
+
+    .timeline-num {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-note { font-size: 0.8rem; color: var(--text-muted); }
+
+    .timeline-alert {
+      margin-top: 2.5rem;
+      padding: 1.75rem 2rem;
+      background: var(--dark);
+      color: #F5EDD8;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      border-left: 4px solid var(--crimson);
+    }
+    .timeline-alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .timeline-alert-text { font-size: 0.86rem; line-height: 1.65; color: rgba(245,237,216,0.85); }
+    .timeline-alert-text strong { color: var(--crimson-light); font-weight: 500; }
+
+    /* ─── IDEAS CREATIVAS ────────────────────────────── */
+    .ideas-section {
+      background: var(--bg-alt);
+      margin: 0 -2.5rem;
+      padding: 5.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle texture pattern */
+    .ideas-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(158,140,88,0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .ideas-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .idea-card {
+      background: var(--white);
+      padding: 2.75rem 2.25rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
+      cursor: default;
+    }
+    .idea-card:hover {
+      background: var(--bg);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(26,18,8,0.12);
+      z-index: 2;
+    }
+
+    .idea-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .idea-card:hover::before { transform: scaleX(1); }
+    .idea-card:nth-child(1)::before { background: var(--khaki); }
+    .idea-card:nth-child(2)::before { background: var(--blue); }
+    .idea-card:nth-child(3)::before { background: var(--crimson); }
+
+    .idea-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .idea-card:hover .idea-icon { transform: scale(1.15) rotate(5deg); }
+
+    .idea-eyebrow {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .idea-card:nth-child(1) .idea-eyebrow { color: var(--khaki); }
+    .idea-card:nth-child(2) .idea-eyebrow { color: var(--blue-dark); }
+    .idea-card:nth-child(3) .idea-eyebrow { color: var(--crimson); }
+
+    .idea-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    .idea-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .idea-rule {
+      width: 25px; height: 1px;
+      background: var(--border);
+      margin-bottom: 1.25rem;
+      transition: width 0.4s, background 0.3s;
+    }
+    .idea-card:hover .idea-rule { width: 45px; }
+    .idea-card:nth-child(1):hover .idea-rule { background: var(--khaki); }
+    .idea-card:nth-child(2):hover .idea-rule { background: var(--blue); }
+    .idea-card:nth-child(3):hover .idea-rule { background: var(--crimson); }
+
+    .idea-body {
+      font-size: 0.81rem;
+      line-height: 1.78;
+      color: var(--text-muted);
+      flex: 1;
+    }
+    .idea-footer {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+    .idea-card:nth-child(1) .idea-footer { color: var(--khaki); }
+    .idea-card:nth-child(2) .idea-footer { color: var(--blue-dark); }
+    .idea-card:nth-child(3) .idea-footer { color: var(--crimson); }
+    .idea-footer strong { color: var(--text-muted); font-weight: 400; }
+
+    /* ─── CONDICIONES ────────────────────────────────── */
+    .condiciones-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .cond-list { list-style: none; display: flex; flex-direction: column; gap: 1.15rem; }
+    .cond-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .cond-bullet {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--crimson);
+      flex-shrink: 0;
+      margin-top: 0.52rem;
+    }
+
+    .contact-block {
+      border: 1px solid var(--border);
+      padding: 2.25rem;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.35s;
+    }
+    .contact-block:hover { box-shadow: 0 8px 30px rgba(26,18,8,0.08); }
+    .contact-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--crimson));
+    }
+    .contact-label {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 1.1rem;
+    }
+    .contact-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .contact-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 1.75rem;
+    }
+    .contact-badge {
+      display: inline-block;
+      padding: 0.45rem 1.25rem;
+      background: var(--dark);
+      color: var(--blue-light);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
+      cursor: default;
+    }
+    .contact-badge:hover { background: var(--crimson); color: #fff; }
+    .contact-badge { text-decoration: none; }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    .site-footer {
+      background: var(--dark);
+      padding: 2.25rem 0;
+      text-align: center;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+    }
+    .footer-band {
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--blue) 0%, var(--blue) 25%,
+        var(--khaki) 25%, var(--khaki) 50%,
+        var(--crimson) 50%, var(--crimson) 75%,
+        var(--dark-mid) 75%, var(--dark-mid) 100%);
+    }
+    .footer-inner { padding: 2rem 0; color: rgba(245,237,216,0.35); }
+    .footer-inner span { color: var(--blue-light); }
+
+    /* ─── PRINT ───────────────────────────────────────── */
+    @media print {
+      body { font-size: 12px; background: white; }
+      .page { max-width: 100%; padding: 0 1.5cm; }
+      section { padding: 2rem 0; break-inside: avoid; }
+      .site-header { padding: 1.5rem 0; }
+      .ideas-section { margin: 0; padding: 2rem 0; }
+      .reveal, .reveal-left { opacity: 1 !important; transform: none !important; }
+      .card:hover, .idea-card:hover { transform: none; box-shadow: none; }
+
+      .site-header, .budget-table thead tr, .budget-table tfoot tr,
+      .timeline-alert, .site-footer, .footer-band,
+      .card, .idea-card, .diag-col, .ideas-section,
+      .contact-block, .header-band {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 720px) {
+      .page { padding: 0 1.25rem; }
+      .header-inner { grid-template-columns: 1fr; gap: 1.75rem; }
+      .logo-wrap { width: 90px; height: 90px; }
+      .diag-grid, .entregables-grid, .ideas-grid { grid-template-columns: 1fr; }
+      .condiciones-grid { grid-template-columns: 1fr; }
+      .ideas-section { margin: 0 -1.25rem; padding: 4rem 1.25rem; }
+      .timeline::before { left: 85px; }
+      .timeline-item { grid-template-columns: 85px 1fr; gap: 1.5rem; }
+      .timeline-dot { left: 85px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════ COLOR BAND + HEADER ════ -->
+  <div class="header-band"></div>
+
+  <header class="site-header">
+    <div class="page">
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <img src="data:image/avif;base64,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" alt="La Papelería" />
+        </div>
+        <div class="header-text">
+          <p class="header-kicker">Propuesta creativa &amp; presupuesto</p>
+          <h1 class="header-title">Materiales de<br>expansión comercial</h1>
+          <p class="header-subtitle">La Papelería · Franquicias Latam 2026</p>
+          <div class="header-rule"></div>
+          <div class="header-meta">
+            <div class="meta-item">
+              <span class="meta-label">Preparado para</span>
+              <span class="meta-value">Andrés &amp; Cathy</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Preparado por</span>
+              <span class="meta-value">Giorgio Pandolffo</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Fecha</span>
+              <span class="meta-value">Abril 2026</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Validez</span>
+              <span class="meta-value">30 días</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <!-- ════ 01 INTRO ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">01</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Punto de partida</span>
+          <h2 class="section-heading">Una marca que merece<br>materiales a su altura</h2>
+        </div>
+      </div>
+
+      <blockquote class="intro-quote reveal d1">
+        La Papelería tiene en sus manos algo valioso: una marca con personalidad genuina, un producto aspiracional y un modelo de negocio probado en dos países.
+      </blockquote>
+
+      <p class="intro-body reveal d2">
+        El desafío para esta etapa de expansión no es tener más información, sino comunicar mejor lo que ya existe. Esta propuesta plantea un sistema de materiales coherente — desde el primer contacto visual hasta el documento que se entrega cuando el trato está cerrado — todo hablando con una sola voz.
+      </p>
+    </section>
+
+
+    <!-- ════ 02 DIAGNÓSTICO ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">02</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Análisis del material existente</span>
+          <h2 class="section-heading">Diagnóstico</h2>
+        </div>
+      </div>
+
+      <div class="diag-grid">
+        <div class="diag-col reveal d1">
+          <div class="diag-col-head">
+            <div class="diag-indicator green"></div>
+            <span class="diag-col-title">Lo que funciona bien</span>
+          </div>
+          <ul class="diag-list">
+            <li>El video de marca final es excelente: ágil, bien filmado, transmite lifestyle. Es el activo más valioso que tienen hoy.</li>
+            <li>El manual operativo es completo y riguroso. Contiene todo el know-how necesario para un franquiciado.</li>
+            <li>La versión PDF lúdica tiene más alma de marca: es más cercana a la personalidad real.</li>
+          </ul>
+        </div>
+        <div class="diag-col right reveal d2">
+          <div class="diag-col-head">
+            <div class="diag-indicator amber"></div>
+            <span class="diag-col-title">Lo que necesita trabajo</span>
+          </div>
+          <ul class="diag-list">
+            <li>Ningún material usa consistentemente los colores corporativos ni las tipografías del manual.</li>
+            <li>La presentación de datos usa tipografías redondeadas e infantiles, ajenas al ADN de la marca.</li>
+            <li>No existe un material físico de prospección: algo fino que se pueda dejar en una reunión.</li>
+            <li>El video existente está en portugués. La versión en español requiere revisión y ajustes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════ 03 ENTREGABLES ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">03</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Alcance del proyecto</span>
+          <h2 class="section-heading">Los cuatro entregables</h2>
+        </div>
+      </div>
+
+      <div class="entregables-grid">
+
+        <div class="card reveal d1">
+          <div class="card-num">01</div>
+          <div class="card-eyebrow">Video</div>
+          <div class="card-title">Video Intro de Marca</div>
+          <div class="card-subtitle">"Así se ve La Papelería"</div>
+          <div class="card-rule"></div>
+          <div class="card-body">
+            Edición y adaptación del video existente al formato de reunión presencial: versión de 60–90 segundos con apertura y cierre de marca en español. Incorporación de textos en pantalla con tipografías y colores correctos del manual. Entrega en MP4 optimizado para proyección y envío digital.
+          </div>
+          <div class="card-price-wrap">
+            <div class="card-price-label">Inversión</div>
+            <div class="card-price">$650.000 <span>CLP</span></div>
+          </div>
+        </div>
+
+        <div class="card reveal d2">
+          <div class="card-num">02</div>
+          <div class="card-eyebrow">Presentación</div>
+          <div class="card-title">Presentación Datos Duros</div>
+          <div class="card-subtitle">"El negocio en 10 slides"</div>
+          <div class="card-rule"></div>
+          <div class="card-body">
+            Rediseño completo de la presentación ejecutiva: hasta 12 slides con tipografías del manual, paleta corporativa y visualizaciones simples (mapas, íconos, gráficos de marca). Estructura narrativa clara. Entrega en PowerPoint editable + PDF listo para enviar.
+          </div>
+          <div class="card-price-wrap">
+            <div class="card-price-label">Inversión</div>
+            <div class="card-price">$520.000 <span>CLP</span></div>
+          </div>
+        </div>
+
+        <div class="card reveal d3">
+          <div class="card-num">03</div>
+          <div class="card-eyebrow">Material físico</div>
+          <div class="card-title">Material Físico de Prospección</div>
+          <div class="card-subtitle">"El regalo que deja La Papelería"</div>
+          <div class="card-rule"></div>
+          <div class="card-body">
+            Lookbook 10×15 cm, 12–16 páginas en papel couché mate 200g. Contenido: 6–8 fotografías seleccionadas de tiendas y productos, mínimo texto, solo marca, web y países. Opción de sobre o faja de papel kraft con logo. Arte final listo para imprenta.
+          </div>
+          <div class="card-price-wrap">
+            <div class="card-price-label">Inversión (diseño)</div>
+            <div class="card-price">$490.000 <span>CLP</span></div>
+          </div>
+        </div>
+
+        <div class="card reveal d4">
+          <div class="card-num">04</div>
+          <div class="card-eyebrow">Manual</div>
+          <div class="card-title">Actualización Manual Operativo</div>
+          <div class="card-subtitle">"El mismo rigor, con más alma"</div>
+          <div class="card-rule"></div>
+          <div class="card-body">
+            Rediseño visual completo del manual: aplicación de colores, tipografías y elementos gráficos del manual de marca. Nueva portada, separadores de sección e íconos. Fotografías de marca en páginas clave. PDF interactivo con índice clickeable + archivo editable.
+          </div>
+          <div class="card-price-wrap">
+            <div class="card-price-label">Inversión</div>
+            <div class="card-price">$780.000 <span>CLP</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ════ 04 PRESUPUESTO ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">04</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Resumen económico</span>
+          <h2 class="section-heading">Presupuesto</h2>
+        </div>
+      </div>
+
+      <div class="budget-table-wrap reveal d1">
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Entregable</th>
+              <th style="text-align:right">Valor CLP (IVA inc.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01 &nbsp;·&nbsp; Video Intro de Marca</td>
+              <td>$650.000</td>
+            </tr>
+            <tr>
+              <td>02 &nbsp;·&nbsp; Presentación Datos Duros</td>
+              <td>$520.000</td>
+            </tr>
+            <tr>
+              <td>03 &nbsp;·&nbsp; Material Físico de Prospección</td>
+              <td>$490.000</td>
+            </tr>
+            <tr>
+              <td>04 &nbsp;·&nbsp; Actualización Manual Operativo</td>
+              <td>$780.000</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Suite Completa &nbsp;— &nbsp;Los 4 entregables</td>
+              <td>$2.440.000</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="budget-note reveal d2">
+        Todos los valores incluyen IVA. Forma de pago: 50% anticipo al inicio del proyecto · 50% contra entrega final. Los costos de imprenta, fotografía adicional y terceros externos no están incluidos y se cotizan por separado.
+      </p>
+    </section>
+
+
+    <!-- ════ 05 PLAZOS ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">05</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Cronograma estimado</span>
+          <h2 class="section-heading">Plazos</h2>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal d1">
+          <div class="timeline-duration">
+            <div class="timeline-weeks">2–3</div>
+            <div class="timeline-weeks-label">semanas</div>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-num">Entregable 01</div>
+            <div class="timeline-title">Video Intro de Marca</div>
+            <div class="timeline-note">Requiere acceso al material de video existente desde el inicio.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal d2">
+          <div class="timeline-duration">
+            <div class="timeline-weeks">2–3</div>
+            <div class="timeline-weeks-label">semanas</div>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-num">Entregable 02</div>
+            <div class="timeline-title">Presentación Datos Duros</div>
+            <div class="timeline-note">Requiere datos actualizados de tiendas, países y proyecciones.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal d3">
+          <div class="timeline-duration">
+            <div class="timeline-weeks">2–3</div>
+            <div class="timeline-weeks-label">semanas</div>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-num">Entregable 03</div>
+            <div class="timeline-title">Material Físico de Prospección</div>
+            <div class="timeline-note">Arte final → imprenta por separado (agregar 1–2 semanas adicionales).</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal d4">
+          <div class="timeline-duration">
+            <div class="timeline-weeks">4–5</div>
+            <div class="timeline-weeks-label">semanas</div>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-num">Entregable 04</div>
+            <div class="timeline-title">Actualización Manual Operativo</div>
+            <div class="timeline-note">Requiere el documento fuente completo y actualizado. Puede trabajarse en paralelo.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-alert reveal d5">
+        <div class="timeline-alert-icon">◈</div>
+        <div class="timeline-alert-text">
+          <strong>Deadline: viaje de julio 2026.</strong> Para tener los entregables 1, 2 y 3 listos a tiempo, el proyecto debe iniciar no más tarde de la <strong>primera quincena de mayo</strong>. El manual operativo puede desarrollarse en paralelo con un plazo más holgado.
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+
+  <!-- ════ 06 IDEAS CREATIVAS ════ -->
+  <div class="ideas-section">
+    <div class="page">
+      <div class="section-label reveal">
+        <span class="section-num">06</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Valor agregado · Cotización adicional bajo solicitud</span>
+          <h2 class="section-heading">Ideas Creativas · El toque que se recuerda</h2>
+        </div>
+      </div>
+
+      <p class="ideas-subtitle reveal d1">
+        Tres propuestas para que La Papelería deje huella en cada reunión de prospección. Pueden acompañar el lookbook o entregarse por separado.
+      </p>
+
+      <div class="ideas-grid">
+        <div class="idea-card reveal d2">
+          <div class="idea-icon">🏷</div>
+          <div class="idea-eyebrow">Idea 01 · Stickers</div>
+          <div class="idea-title">Pack de Stickers Premium</div>
+          <div class="idea-tagline">"La marca que viaja con ellos"</div>
+          <div class="idea-rule"></div>
+          <div class="idea-body">
+            Un set de 30–40 stickers con ilustraciones exclusivas que capturan el universo de La Papelería: elementos de papelería fina, cintas, sellos, flores, frases de marca. Impresos en vinilo mate troquelado. Empaquetados en un sobre kraft con el logo. Los potenciales franquiciados los llevan a casa, los usan — y la marca viaja con ellos.
+          </div>
+          <div class="idea-footer">
+            <strong>Ideal para:</strong> incluir en el lookbook o entregar como bienvenida
+          </div>
+        </div>
+
+        <div class="idea-card reveal d3">
+          <div class="idea-icon">✉</div>
+          <div class="idea-eyebrow">Idea 02 · Notecards</div>
+          <div class="idea-title">Set de Tarjetas Ilustradas</div>
+          <div class="idea-tagline">"Algo que genuinamente quieren guardar"</div>
+          <div class="idea-rule"></div>
+          <div class="idea-body">
+            Mini-set de 6 tarjetas postales (10×15 cm) con ilustraciones del universo de la marca. Diseño doble cara: ilustración al frente, espacio para nota personal al dorso. Cada tarjeta en su sobre semitransparente glassine. Explica la marca sin una sola palabra de negocio.
+          </div>
+          <div class="idea-footer">
+            <strong>Ideal para:</strong> acompañar el lookbook o enviar como seguimiento post-reunión
+          </div>
+        </div>
+
+        <div class="idea-card reveal d4">
+          <div class="idea-icon">🔖</div>
+          <div class="idea-eyebrow">Idea 03 · Sello de Cera</div>
+          <div class="idea-title">Kit de Sello de Cera</div>
+          <div class="idea-tagline">"El sello que cierra el trato"</div>
+          <div class="idea-rule"></div>
+          <div class="idea-body">
+            Kit compacto con sello metálico personalizado con el logo de La Papelería + 3 barras de cera en los colores corporativos. Presentado en cajita de madera o cartón rígido con la marca grabada. Conecta con el ADN original (el papel, lo artesanal, lo francés) y es un objeto de uso real que el empresario pondrá en su escritorio.
+          </div>
+          <div class="idea-footer">
+            <strong>Ideal para:</strong> regalo de cierre o pieza de colección para primeros franquiciados
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page">
+
+    <!-- ════ 07 CONDICIONES ════ -->
+    <section>
+      <div class="section-label reveal">
+        <span class="section-num">07</span>
+        <div class="section-title-group">
+          <span class="section-eyebrow">Para seguir avanzando</span>
+          <h2 class="section-heading">Condiciones &amp; Contacto</h2>
+        </div>
+      </div>
+
+      <div class="condiciones-grid">
+        <ul class="cond-list reveal d1">
+          <li><div class="cond-bullet"></div>Propuesta válida por 30 días desde su emisión.</li>
+          <li><div class="cond-bullet"></div>Se incluyen hasta 2 rondas de revisión por entregable. Revisiones adicionales se cotizan aparte.</li>
+          <li><div class="cond-bullet"></div>Los archivos editables se entregan una vez recibido el pago total.</li>
+          <li><div class="cond-bullet"></div>Los costos de imprenta, fotografía adicional y cualquier tercero externo no están incluidos y se coordinan con aprobación previa.</li>
+          <li><div class="cond-bullet"></div>Los plazos comienzan a correr desde la recepción del anticipo y de los materiales de marca necesarios.</li>
+        </ul>
+
+        <div class="contact-block reveal d2">
+          <div class="contact-label">Contacto directo</div>
+          <div class="contact-name">Giorgio Pandolffo</div>
+          <div class="contact-role">Diseño &amp; Comunicación de Marca</div>
+          <a class="contact-badge" href="https://wa.me/56991509244" target="_blank" rel="noopener">💬 Escribir por WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+  <!-- ════ FOOTER ════ -->
+  <div class="footer-band"></div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 &nbsp;<span>La Papelería</span> &nbsp;·&nbsp; Propuesta elaborada por <span>Giorgio Pandolffo</span> &nbsp;·&nbsp; Confidencial</p>
+    </div>
+  </footer>
+
+
+  <!-- ════ SCROLL REVEAL SCRIPT ════ -->
+  <script>
+    (function () {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
