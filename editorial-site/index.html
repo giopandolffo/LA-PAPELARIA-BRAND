@@ -53,10 +53,11 @@ nav .nav-cta:hover{background:var(--dark)!important}
 @media(max-width:768px){nav{padding:.75rem 1rem}nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:1rem;gap:.75rem;border-bottom:1px solid var(--border)}nav .nav-links.open{display:flex}.mobile-toggle{display:block}}
 
 /* ─── HERO ─── */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
-.hero::before{content:'';position:absolute;inset:0;z-index:0;background:#fcfcfc;background-image:radial-gradient(circle at 50% 50%,rgba(174,42,52,.08) 0%,transparent 70%),radial-gradient(circle at 1px 1px,rgba(0,0,0,.12) 1px,transparent 0);background-size:100% 100%,18px 18px;opacity:.8;pointer-events:none;mix-blend-mode:multiply}
-.hero-container{position:relative;z-index:10;text-align:center;padding:6rem 2rem;max-width:700px;margin:0 auto;pointer-events:none}
-.hero-container *{pointer-events:auto}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-content{position:relative;z-index:10;text-align:center;padding:6rem 2rem;max-width:720px;margin:0 auto}
+.hero-content h1{color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.3)}
+#rotatingText{color:var(--red)!important}
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.04;letter-spacing:-.025em;color:var(--dark);font-weight:500;margin-bottom:.5rem}
 .hero .rotating-text{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:.15em}
 #rotatingText{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.04;letter-spacing:-.025em;color:var(--red);font-weight:500}
@@ -66,23 +67,8 @@ nav .nav-cta:hover{background:var(--dark)!important}
 .hero-cta:hover{background:var(--dark);gap:.75rem;transform:translateY(-1px)}
 .hero-cta:active{transform:scale(.98)}
 
-/* Floating images */
-.hero-float{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.hero-float .float-el{position:absolute;will-change:transform;transition:transform .1s ease-out}
-.float-el img{width:100%;height:100%;object-fit:cover;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.1);transition:transform .4s var(--ease)}
-.float-el:hover img{transform:scale(1.05)}
-.float-el-1{width:clamp(80px,10vw,140px);height:clamp(60px,8vw,100px);top:30%;left:18%}
-.float-el-2{width:clamp(140px,18vw,240px);height:clamp(100px,13vw,180px);top:12%;left:22%}
-.float-el-3{width:clamp(140px,18vw,220px);height:clamp(140px,18vw,220px);top:70%;left:15%}
-.float-el-4{width:clamp(140px,18vw,220px);height:clamp(120px,16vw,200px);top:10%;right:20%}
-.float-el-5{width:clamp(160px,22vw,280px);height:clamp(160px,22vw,280px);top:66%;right:18%}
 @media(max-width:768px){
   .hero-container{padding:6rem 1.5rem 3rem;max-width:100%}
-  .float-el-1{width:100px;height:75px;top:26%;left:8%}
-  .float-el-2{width:130px;height:100px;top:6%;left:10%}
-  .float-el-3{width:110px;height:110px;top:76%;left:6%}
-  .float-el-4{width:120px;height:90px;top:5%;right:8%}
-  .float-el-5{width:150px;height:150px;top:74%;right:6%}
   .hero h1{font-size:clamp(1.6rem,5.5vw,2.2rem)}
   #rotatingText{font-size:clamp(1.6rem,5.5vw,2.2rem)}
 }
@@ -221,36 +207,19 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-float" id="heroFloat">
-    <div class="float-el float-el-1"><img src="hero1.jpg" alt=""></div>
-    <div class="float-el float-el-2"><img src="hero2.jpg" alt=""></div>
-    <div class="float-el float-el-3"><img src="hero4.png" alt=""></div>
-    <div class="float-el float-el-4"><img src="hero5.png" alt=""></div>
-    <div class="float-el float-el-5"><img src="hero3.jpg" alt=""></div>
-  </div>
-  <div class="hero-container">
+  <img class="hero-bg" src="hero-bg-new.jpg" alt="">
+  <div class="hero-content">
     <div class="reveal" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.75rem">La Papelaria &amp; Co · Franquicias</div>
     <h1 class="reveal">
       La tienda de stationery<br>
       de diseño <span class="rotating-text" id="rotatingText"></span>
     </h1>
-    <p class="reveal reveal-d1">18 años de éxito en Chile, 11 en Uruguay y presencia en Perú. Un modelo de negocio probado listo paraExpandirse por LATAM.</p>
+    <p class="reveal reveal-d1" style="color:#1a1a18">18 años de éxito en Chile, 11 en Uruguay y presencia en Perú. Un modelo de negocio probado listo paraExpandirse por LATAM.</p>
     <div class="reveal reveal-d2" style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
       <a href="#marca" class="hero-cta">Descubrir la oportunidad →</a>
     </div>
   </div>
 </section>
-
-<!-- ═══ VIDEO BANNER ═══ -->
-<div style="position:relative;width:100%;height:80vh;overflow:hidden;background:#1a1a18" class="video-banner">
-  <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-    <source src="hero-video-banner.mp4" type="video/mp4">
-  </video>
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,24,.65) 0%,rgba(26,26,24,.15) 100%);z-index:1"></div>
-  <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:0 2rem">
-    <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:clamp(5rem,10vw,8rem);width:auto;filter:brightness(0) invert(1);opacity:.95">
-  </div>
-</div>
 
 <!-- ═══ SEC 01: QUIÉNES SOMOS ═══ -->
 <section id="marca">
@@ -266,6 +235,17 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
     </div>
   </div>
 </section>
+
+<!-- ═══ VIDEO BANNER ═══ -->
+<div style="position:relative;width:100%;height:80vh;overflow:hidden;background:#1a1a18" class="video-banner">
+  <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+    <source src="hero-video-banner.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,24,.65) 0%,rgba(26,26,24,.15) 100%);z-index:1"></div>
+  <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:0 2rem">
+    <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:clamp(5rem,10vw,8rem);width:auto;filter:brightness(0) invert(1);opacity:.95">
+  </div>
+</div>
 
 
 <!-- ═══ SEC 02: NÚMEROS ═══ -->
@@ -560,31 +540,6 @@ function handleFormSubmit(e){
   typeWord();
 })();
 
-// PARALLAX FLOATING + SCROLL PARALLAX
-(function(){
-  const container=document.getElementById('heroFloat');
-  if(!container)return;
-  const els=container.querySelectorAll('.float-el');
-  let mx=0,my=0;
-
-  document.addEventListener('mousemove',e=>{
-    mx=(e.clientX/window.innerWidth-.5)*2;
-    my=(e.clientY/window.innerHeight-.5)*2;
-  });
-
-  function animate(){
-    const st=window.scrollY;
-    els.forEach((el,i)=>{
-      const d=(i+1)*.3;
-      const x=mx*d*8;
-      const y=my*d*8;
-      const scrollOffset=st*((i+1)*.03);
-      el.style.transform=`translate3d(${x}px,${y}px,0) translateY(${-scrollOffset}px)`;
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
 
 
 // FEE TEXT STAGGER REVEAL
