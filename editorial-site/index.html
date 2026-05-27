@@ -94,7 +94,7 @@ section{padding:5rem 2rem}
 
 h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1;letter-spacing:-.02em;color:var(--dark);margin-bottom:.75rem}
 .section-sub{font-size:.9rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:2rem}
-@media(max-width:768px){section{padding:3rem 1rem}}
+@media(max-width:768px){section{padding:3rem 1rem}.video-banner{height:40vh!important}}
 
 /* ─── PHOTO PLACEHOLDER ─── */
 .photo-box{background:#f0ede8;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:#bbb;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;min-height:200px;width:100%}
@@ -158,7 +158,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .c-card .stat b{color:var(--red);font-weight:500}
 @media(max-width:768px){.c-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.c-grid{grid-template-columns:1fr}}
-@media(max-width:375px){.hero-container{padding:5rem 1rem 2rem}.section-inner{padding:0}.grid-2{gap:1rem}.c-card{padding:.85rem}}
+@media(max-width:375px){.hero-container{padding:5rem 1rem 2rem}.section-inner{padding:0}.grid-2{gap:1rem}.c-card{padding:.85rem}.video-banner{height:30vh!important}}
 
 /* ─── FEE STAGGER ─── */
 .fee-word{display:inline-block;opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
@@ -242,7 +242,7 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
 </section>
 
 <!-- ═══ VIDEO BANNER ═══ -->
-<div style="position:relative;width:100%;height:80vh;overflow:hidden;background:#1a1a18">
+<div style="position:relative;width:100%;height:80vh;overflow:hidden;background:#1a1a18" class="video-banner">
   <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
     <source src="hero-video-banner.mp4" type="video/mp4">
   </video>
