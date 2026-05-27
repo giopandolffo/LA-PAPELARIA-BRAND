@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Papelaria & Co · Franquicias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#ae2a34;--blue:#85adce;--gold:#a08c64;--dark:#281414;--cream:#f0f0f0;--bg:#fcfcfc;--text:#1a1a1a;--muted:#888;--border:#eee;--ease:cubic-bezier(.32,.72,0,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+::selection{background:var(--red);color:#fff}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes slideRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}.reveal-d4{transition-delay:.48s}
+.reveal-left{opacity:0;transform:translateX(-20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger-children>*{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.stagger-children.visible>*{opacity:1;transform:translateY(0)}
+.stagger-children.visible>*:nth-child(1){transition-delay:.05s}
+.stagger-children.visible>*:nth-child(2){transition-delay:.1s}
+.stagger-children.visible>*:nth-child(3){transition-delay:.15s}
+.stagger-children.visible>*:nth-child(4){transition-delay:.2s}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid var(--border)}
+nav .logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--text);letter-spacing:-.03em;font-weight:500}
+nav .nav-links{display:flex;gap:1.5rem;align-items:center}
+nav .nav-links a{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#b0b0aa;transition:color .35s var(--ease);font-weight:500;cursor:pointer;position:relative}
+nav .nav-links a:hover{color:var(--text)}
+nav .nav-links a::after{content:'';position:absolute;bottom:2px;left:1.2rem;right:1.2rem;height:1px;background:var(--red);transform:scaleX(0);transition:transform .3s var(--ease)}
+nav .nav-links a:hover::after{transform:scaleX(1)}
+nav .nav-cta{padding:.4rem 1.2rem;background:var(--red);color:#fff!important;font-size:.65rem!important;letter-spacing:.15em;border-radius:999px}
+nav .nav-cta:hover{background:var(--dark)!important}
+.mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);padding:.25rem}
+@media(max-width:768px){nav{padding:.75rem 1rem}nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:1rem;gap:.75rem;border-bottom:1px solid var(--border)}nav .nav-links.open{display:flex}.mobile-toggle{display:block}}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg)}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background:#fcfcfc;background-image:radial-gradient(circle at 50% 50%,rgba(174,42,52,.08) 0%,transparent 70%),radial-gradient(circle at 1px 1px,rgba(0,0,0,.12) 1px,transparent 0);background-size:100% 100%,18px 18px;opacity:.8;pointer-events:none;mix-blend-mode:multiply}
+.hero-container{position:relative;z-index:10;text-align:center;padding:6rem 2rem;max-width:700px;margin:0 auto;pointer-events:none}
+.hero-container *{pointer-events:auto}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.04;letter-spacing:-.025em;color:var(--dark);font-weight:500;margin-bottom:.5rem}
+.hero .rotating-text{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:.15em}
+#rotatingText{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.04;letter-spacing:-.025em;color:var(--red);font-weight:500}
+.hero .rotating-text .char{display:inline-block;transition:all .35s var(--ease)}
+.hero p{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.75;margin:.75rem auto 1.5rem}
+.hero-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;background:var(--red);color:#fff;font-size:.82rem;font-weight:500;letter-spacing:.03em;transition:all .4s var(--ease);border:none;cursor:pointer;will-change:transform;border-radius:999px}
+.hero-cta:hover{background:var(--dark);gap:.75rem;transform:translateY(-1px)}
+.hero-cta:active{transform:scale(.98)}
+
+/* Floating images */
+.hero-float{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.hero-float .float-el{position:absolute;will-change:transform;transition:transform .1s ease-out}
+.float-el img{width:100%;height:100%;object-fit:cover;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.1);transition:transform .4s var(--ease)}
+.float-el:hover img{transform:scale(1.05)}
+.float-el-1{width:clamp(80px,10vw,140px);height:clamp(60px,8vw,100px);top:30%;left:18%}
+.float-el-2{width:clamp(140px,18vw,240px);height:clamp(100px,13vw,180px);top:12%;left:22%}
+.float-el-3{width:clamp(140px,18vw,220px);height:clamp(140px,18vw,220px);top:70%;left:15%}
+.float-el-4{width:clamp(140px,18vw,220px);height:clamp(120px,16vw,200px);top:10%;right:20%}
+.float-el-5{width:clamp(160px,22vw,280px);height:clamp(160px,22vw,280px);top:66%;right:18%}
+@media(max-width:768px){
+  .hero-container{padding:6rem 1.5rem 3rem;max-width:100%}
+  .float-el-1{width:100px;height:75px;top:26%;left:8%}
+  .float-el-2{width:130px;height:100px;top:6%;left:10%}
+  .float-el-3{width:110px;height:110px;top:76%;left:6%}
+  .float-el-4{width:120px;height:90px;top:5%;right:8%}
+  .float-el-5{width:150px;height:150px;top:74%;right:6%}
+  .hero h1{font-size:clamp(1.6rem,5.5vw,2.2rem)}
+  #rotatingText{font-size:clamp(1.6rem,5.5vw,2.2rem)}
+}
+
+/* ─── SECTION ─── */
+section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.tag{display:inline-block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:.6rem}
+
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1;letter-spacing:-.02em;color:var(--dark);margin-bottom:.75rem}
+.section-sub{font-size:.9rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:2rem}
+@media(max-width:768px){section{padding:3rem 1rem}}
+
+/* ─── PHOTO PLACEHOLDER ─── */
+.photo-box{background:#f0ede8;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:#bbb;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;min-height:200px;width:100%}
+.photo-box.lg{min-height:350px}
+.photo-box.full{min-height:50vh;border:none;background:#f5f3ef;position:relative;overflow:hidden}
+.photo-box.full .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,rgba(40,20,20,.85) 0%,rgba(40,20,20,.4) 100%);z-index:1}
+.photo-box.full img.bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+
+/* ─── GRIDS ─── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border)}
+.grid-3>div{padding:2.5rem 2rem;background:var(--bg);text-align:center;transition:all .4s var(--ease);cursor:default}
+.grid-3>div:nth-child(1):hover{background:#85adce;color:#fff}
+.grid-3>div:nth-child(2):hover{background:#9b9163;color:#fff}
+.grid-3>div:nth-child(3):hover{background:#ae2a34;color:#fff}
+.grid-3>div:hover .num,.grid-3>div:hover h3,.grid-3>div:hover p,.grid-3>div:hover .tag-sm{color:#fff!important}
+.grid-3 .num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--red);line-height:1;margin-bottom:.35rem;font-weight:500}
+.grid-3 h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;color:var(--dark);margin-bottom:.5rem}
+.grid-3 p{font-size:.82rem;color:var(--muted);line-height:1.65}
+.grid-3 .tag-sm{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr;gap:1.5rem}.grid-3{grid-template-columns:1fr}}
+
+/* ─── FEEDBACK FILTER ─── */
+
+/* ─── BRANDS ─── */
+.brand-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.brand-badge{padding:.35rem .85rem;border:1px solid var(--border);font-size:.78rem;color:var(--muted);transition:all .25s var(--ease);cursor:default}
+.brand-badge:nth-child(4n+1):hover{background:#ae2a34;color:#fff;border-color:#ae2a34}
+.brand-badge:nth-child(4n+2):hover{background:#85adce;color:#fff;border-color:#85adce}
+.brand-badge:nth-child(4n+3):hover{background:#9b9163;color:#fff;border-color:#9b9163}
+.brand-badge:nth-child(4n+4):hover{background:#281414;color:#fff;border-color:#281414}
+
+.store-card{transition:all .3s var(--ease);cursor:default}
+.store-card:nth-child(1):hover{background:#ae2a34!important;border-color:#ae2a34!important}
+.store-card:nth-child(2):hover{background:#85adce!important;border-color:#85adce!important}
+.store-card:nth-child(3):hover{background:#9b9163!important;border-color:#9b9163!important}
+.store-card:hover p,.store-card:hover .store-label{color:#fff!important}
+.brand-badge:hover{border-color:var(--gold);color:var(--text)}
+
+/* ─── NUMBERS ROW ─── */
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.5rem 0}
+.numbers .item{text-align:center}
+.numbers .item .val{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--red);line-height:1;font-weight:500}
+.numbers .item .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin-top:.25rem;font-weight:500}
+@media(max-width:600px){.numbers{grid-template-columns:1fr 1fr}}
+
+/* ─── COUNTRY CARDS ─── */
+.c-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+.c-card{padding:1.25rem;border:1px solid var(--border);transition:all .4s var(--ease);cursor:default}
+select,input,textarea,button{cursor:pointer}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;background-size:12px}
+.c-card:nth-child(1):hover{background:#ae2a34;border-color:#ae2a34;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:nth-child(2):hover{background:#85adce;border-color:#85adce;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:nth-child(3):hover{background:#9b9163;border-color:#9b9163;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:hover .name,.c-card:hover .meta,.c-card:hover .stat,.c-card:hover .stat b{color:#fff!important}
+.c-card:hover .stat{border-top-color:rgba(255,255,255,.2)!important}
+.c-card .flag{font-size:1.5rem;display:block;margin-bottom:.25rem}
+.c-card .name{font-size:.9rem;font-weight:500;color:var(--dark)}
+.c-card .meta{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-top:.15rem}
+.c-card .stat{display:flex;justify-content:space-between;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+.c-card .stat b{color:var(--red);font-weight:500}
+@media(max-width:768px){.c-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.c-grid{grid-template-columns:1fr}}
+@media(max-width:375px){.hero-container{padding:5rem 1rem 2rem}.section-inner{padding:0}.grid-2{gap:1rem}.c-card{padding:.85rem}}
+
+/* ─── FEE STAGGER ─── */
+.fee-word{display:inline-block;opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.fee-word.visible{opacity:1;transform:translateY(0)}
+
+/* ─── MAGIC TEXT ─── */
+.magic-text{display:flex;flex-wrap:wrap;gap:.2em .35em;justify-content:center}
+.magic-word{position:relative;display:inline-block;opacity:.12;transition:opacity .7s var(--ease-out);color:#fff}
+.magic-word.revealed{opacity:1}
+
+/* ─── VALUES ─── */
+.v-grid{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+.v-tag{padding:.3rem .85rem;border:1px solid var(--border);font-size:.75rem;color:var(--muted);letter-spacing:.02em;font-family:'Playfair Display',serif;font-style:italic;transition:all .3s;cursor:default}
+.v-tag:nth-child(4n+1):hover{background:#ae2a34;color:#fff;border-color:#ae2a34}
+.v-tag:nth-child(4n+2):hover{background:#85adce;color:#fff;border-color:#85adce}
+.v-tag:nth-child(4n+3):hover{background:#9b9163;color:#fff;border-color:#9b9163}
+.v-tag:nth-child(4n+4):hover{background:#281414;color:#fff;border-color:#281414}
+
+/* ─── GALLERY ─── */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.gallery .photo-box{min-height:220px}
+
+/* ─── MODAL ─── */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;justify-content:center;align-items:center;padding:1rem;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;max-width:560px;width:100%;padding:2rem;position:relative;box-shadow:0 16px 48px rgba(0,0,0,.15);animation:modalIn .3s var(--ease)}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;font-size:1.25rem;cursor:pointer;color:#999;padding:.25rem;line-height:1;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.modal p{font-size:.88rem;color:#555;line-height:1.85;margin-bottom:.85rem}
+.modal strong{color:var(--dark);font-weight:500}
+@media(max-width:768px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.gallery{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+footer{padding:2.5rem 2rem 1.5rem;border-top:1px solid var(--border)}
+.footer-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+footer h4{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:500;color:var(--dark);margin-bottom:.75rem}
+footer a{display:block;font-size:.78rem;color:var(--muted);padding:.15rem 0;transition:color .3s}
+footer a:hover{color:var(--text)}
+footer .desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;border-top:1px solid var(--border);letter-spacing:.06em}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:1.8rem;width:auto">
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#marca">Marca</a>
+    <a href="#franquicia">Franquicia</a>
+    <a href="#expansion">Expansión</a>
+    <a href="#contacto" class="nav-cta">Comenzar</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-float" id="heroFloat">
+    <div class="float-el float-el-1"><img src="hero1.jpg" alt=""></div>
+    <div class="float-el float-el-2"><img src="hero2.jpg" alt=""></div>
+    <div class="float-el float-el-3"><img src="hero4.png" alt=""></div>
+    <div class="float-el float-el-4"><img src="hero5.png" alt=""></div>
+    <div class="float-el float-el-5"><img src="hero3.jpg" alt=""></div>
+  </div>
+  <div class="hero-container">
+    <div class="reveal" style="font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.75rem">La Papelaria &amp; Co · Franquicias</div>
+    <h1 class="reveal">
+      La tienda de stationery<br>
+      de diseño <span class="rotating-text" id="rotatingText"></span>
+    </h1>
+    <p class="reveal reveal-d1">18 años de éxito en Chile, 11 en Uruguay y presencia en Perú. Un modelo de negocio probado listo paraExpandirse por LATAM.</p>
+    <div class="reveal reveal-d2" style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
+      <a href="#marca" class="hero-cta">Descubrir la oportunidad →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO BANNER ═══ -->
+<div style="position:relative;width:100%;height:80vh;overflow:hidden;background:#1a1a18">
+  <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+    <source src="hero-video-banner.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,24,.65) 0%,rgba(26,26,24,.15) 100%);z-index:1"></div>
+  <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:0 2rem">
+    <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:clamp(5rem,10vw,8rem);width:auto;filter:brightness(0) invert(1);opacity:.95">
+  </div>
+</div>
+
+<!-- ═══ SEC 01: QUIÉNES SOMOS ═══ -->
+<section id="marca">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="tag reveal">01 · Quiénes Somos</span>
+        <h2 class="section-title reveal scramble">Una propuesta de papelería de diseño diferenciado creada en Chile</h2>
+        <p class="section-sub reveal" style="margin-bottom:1rem">Hoy es una tienda de regalos con fuerte base en productos de papel, encontrando elementos como mugs, productos de viaje, entre otros. Nuestro propósito es agregarle magia al día a día a nuestros clientes.</p>
+        <div class="reveal reveal-d1"><button class="hero-cta" style="font-size:.75rem;padding:.6rem 1.25rem;border:none;cursor:pointer" onclick="openModal()">Conocer más</button></div>
+      </div>
+      <img src="foto-quienes.jpg" alt="" class="reveal reveal-d2" style="width:100%;height:350px;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SEC 02: NÚMEROS ═══ -->
+<section style="background:#f8f8f6">
+  <div class="section-inner">
+    <span class="tag reveal">Crecimiento en la Región</span>
+    <h2 class="section-title reveal scramble" style="max-width:500px">Hemos ido creciendo en nuestros países vecinos</h2>
+    <div class="numbers stagger-children">
+      <div class="item reveal"><span style="font-size:2rem;display:block;margin-bottom:.25rem">🇨🇱</span><div class="val">27</div><div class="lbl">Puntos de venta Chile</div></div>
+      <div class="item reveal reveal-d1"><span style="font-size:2rem;display:block;margin-bottom:.25rem">🇺🇾</span><div class="val">33</div><div class="lbl">Puntos de venta Uruguay</div></div>
+      <div class="item reveal reveal-d2"><span style="font-size:2rem;display:block;margin-bottom:.25rem">🇵🇪</span><div class="val">3</div><div class="lbl">Puntos de venta Perú</div></div>
+      <div class="item reveal reveal-d3"><span style="font-size:2rem;display:block;margin-bottom:.25rem">🌎</span><div class="val">63+</div><div class="lbl">Total puntos de venta</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SEC 03: PASIÓN + EQUIPO ═══ -->
+<section>
+  <div class="section-inner">
+    <div class="grid-2">
+      <div>
+        <span class="tag reveal">Nos encanta lo que hacemos</span>
+        <h2 class="section-title reveal scramble">Nuestra clave es la pasión</h2>
+        <p class="section-sub reveal" style="margin-bottom:.75rem">Siempre estamos en una búsqueda constante del producto perfecto para nuestros clientes.</p>
+        <p class="reveal reveal-d1" style="font-size:.85rem;color:var(--muted);line-height:1.7;min-height:1.7em"><span id="typewriterLine" style="color:var(--red)"></span><span style="animation:blink 1s step-end infinite" id="cursorLine">|</span></p>
+        <div class="v-grid reveal">
+          <span class="v-tag">Orgullo</span><span class="v-tag">Coraje</span><span class="v-tag">Positivismo</span>
+          <span class="v-tag">Tolerancia</span><span class="v-tag">Alegría</span><span class="v-tag">Integridad</span>
+          <span class="v-tag">Confianza</span><span class="v-tag">Sostenibilidad</span><span class="v-tag">Responsabilidad</span>
+        </div>
+      </div>
+      <img src="foto-pasion.png" alt="" class="reveal reveal-d1" style="width:100%;height:350px;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SEC 04: VM + TIENDAS ═══ -->
+<section style="background:#f8f8f6">
+  <div class="section-inner">
+    <div class="grid-2">
+      <img src="foto3.png" alt="" class="reveal" style="width:100%;height:350px;object-fit:cover">
+      <div>
+        <span class="tag reveal">Diferencial de Valor</span>
+        <h2 class="section-title reveal scramble">Visual Merchandising, un pilar fundamental</h2>
+        <p class="section-sub reveal">Una de nuestras grandes pasiones es la estética y el cuidado de "que se vea bien". El look & feel de nuestras tiendas es un diferencial de valor. Nuestras tiendas enamoran por sí solas.</p>
+        <div class="reveal reveal-d1" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+          <div class="store-card" style="border:1px solid var(--border);padding:1rem;text-align:center;background:var(--bg)">
+            <p style="font-size:1.25rem;font-weight:500;color:var(--red);font-family:'Playfair Display',serif;transition:color .3s var(--ease)">20–50m²</p>
+            <p class="store-label" style="font-size:.7rem;color:var(--muted);margin-top:.15rem;transition:color .3s var(--ease)">Stand Alone</p>
+          </div>
+          <div class="store-card" style="border:1px solid var(--border);padding:1rem;text-align:center;background:var(--bg)">
+            <p style="font-size:1.25rem;font-weight:500;color:var(--gold);font-family:'Playfair Display',serif;transition:color .3s var(--ease)">10–25m²</p>
+            <p class="store-label" style="font-size:.7rem;color:var(--muted);margin-top:.15rem;transition:color .3s var(--ease)">Shop in Shop</p>
+          </div>
+          <div class="store-card" style="border:1px solid var(--border);padding:1rem;text-align:center;background:var(--bg)">
+            <p style="font-size:1.25rem;font-weight:500;color:var(--blue);font-family:'Playfair Display',serif;transition:color .3s var(--ease)">8–15m²</p>
+            <p class="store-label" style="font-size:.7rem;color:var(--muted);margin-top:.15rem;transition:color .3s var(--ease)">Islas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SEC 05: MARCAS ═══ -->
+<section>
+  <div class="section-inner">
+    <span class="tag reveal">Nuestros Productos</span>
+    <h2 class="section-title reveal scramble">Las mejores marcas de stationery las tiene La Papelaria</h2>
+    <div class="grid-2" style="margin-top:1rem">
+      <div class="reveal">
+        <p style="font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Internacionales</p>
+        <div class="brand-badges">
+          <span class="brand-badge">Ban.do</span><span class="brand-badge">Rifle</span><span class="brand-badge">Graphique D'France</span>
+          <span class="brand-badge">Leuchtturm</span><span class="brand-badge">Peter Pauper</span><span class="brand-badge">PaperBlanks</span>
+          <span class="brand-badge">Waste Not Paper</span><span class="brand-badge">The Happy Planner</span><span class="brand-badge">Orange Circle Studio</span>
+          <span class="brand-badge" style="border-color:#ddd;color:#ccc;font-style:italic">y muchas más...</span>
+        </div>
+        <p style="font-size:.65rem;color:#bbb;margin-top:.5rem;letter-spacing:.06em;text-transform:uppercase">EE.UU · Alemania · Italia · Holanda · Canadá · UK</p>
+      </div>
+      <div class="reveal reveal-d1">
+        <p style="font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Propias</p>
+        <div style="border:1px solid var(--border);padding:1rem;margin-bottom:.5rem">
+          <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Diferencial</span>
+          <p style="font-size:1rem;font-weight:500;color:var(--dark)">Tangerine</p>
+          <p style="font-size:.78rem;color:var(--muted);margin-top:.15rem">Diseño exclusivo, márgenes optimizados. Presente en Chile, Perú y Uruguay.</p>
+        </div>
+        <div style="border:1px solid var(--border);padding:1rem">
+          <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Diferencial</span>
+          <p style="font-size:1rem;font-weight:500;color:var(--dark)">Yay Paper</p>
+          <p style="font-size:.78rem;color:var(--muted);margin-top:.15rem">Papelería con diseño diferenciado. Alta rentabilidad y amplio espectro de clientes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ BANNER FOTO ═══ -->
+<div class="photo-box full">
+  <img class="bg" src="banner-quote.png" alt="">
+  <div class="overlay"></div>
+  <div style="position:relative;z-index:2;height:100%;display:flex;align-items:center;padding:0 2rem;max-width:700px;margin:0 auto">
+    <p class="magic-text" id="magicQuote" style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,2rem);color:#fff;font-style:italic;line-height:1.3;padding:0 1rem;text-shadow:0 2px 8px rgba(0,0,0,.3)"></p>
+  </div>
+</div>
+
+
+<!-- ═══ SEC 06: FRANQUICIA ═══ -->
+<section id="franquicia">
+  <div class="section-inner">
+    <span class="tag reveal">04 · Franquicias</span>
+    <h2 class="section-title reveal scramble">Un modelo de negocio exitoso</h2>
+    <p class="section-sub reveal">18 años de vida exitosa en Chile, 11 años de éxito en Uruguay, 1 año de éxito en Perú.</p>
+
+    <div class="grid-3 reveal">
+      <div><div class="num">01</div><span class="tag-sm">La Propuesta</span><h3>Negocio Probado</h3><p>Operando en 3 países. Marca líder y referente en su nicho. Modelo fácil de adaptar a mercados.</p></div>
+      <div><div class="num">02</div><span class="tag-sm">La Oportunidad</span><h3>Alto Potencial</h3><p>Marca con imagen internacional. Productos no perecederos, control de stock sin producción. Acceso a buenos márgenes.</p></div>
+      <div><div class="num">03</div><span class="tag-sm">El Negocio</span><h3>Soporte Total</h3><p>Entrenamiento inicial y permanente. Mix definido por central. Artes para publicidad digital y física. Instructivos VM.</p></div>
+    </div>
+
+    <!-- Fee note -->
+    <div class="reveal" style="margin-top:1.5rem;padding:1rem;border:1px solid var(--gold);background:#faf8f5">
+      <p style="font-size:.8rem;color:#555;line-height:1.6;display:flex;flex-wrap:wrap;gap:.2em" id="feeText"><strong>Fee Inicial:</strong> Modelo de inversión adaptable según potencial de zona, tamaño de territorio y hitos de escalabilidad personalizados. Contáctanos para construir juntos tu hoja de ruta financiera.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SEC 07: EXPANSIÓN ═══ -->
+<section id="expansion" style="background:#f8f8f6">
+  <div class="section-inner">
+    <span class="tag reveal">05 · Expansión</span>
+    <h2 class="section-title reveal scramble">Presencia en 3 países</h2>
+    <div class="c-grid reveal stagger-children" style="margin-top:.5rem">
+      <div class="c-card"><span class="flag">🇨🇱</span><div class="name">Chile</div><div class="meta">Operación Propia</div><div class="stat"><span>27 tiendas</span><b>18 años</b></div></div>
+      <div class="c-card"><span class="flag">🇺🇾</span><div class="name">Uruguay</div><div class="meta">Franquicia (Mosca)</div><div class="stat"><span>33 tiendas</span><b>11 años</b></div></div>
+      <div class="c-card"><span class="flag">🇵🇪</span><div class="name">Perú</div><div class="meta">Operación Propia</div><div class="stat"><span>3 tiendas</span><b>1 año</b></div></div>
+    </div>
+
+    <div class="reveal-scale" style="margin-top:1.5rem;text-align:center;padding:1.5rem;border:1px solid var(--border);background:var(--bg)">
+      <p style="font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:#bbb;font-weight:500;margin-bottom:.5rem">Oportunidad de subfranquiciar</p>
+      <p style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--dark)">Cada franquiciado puede subfranquiciar la marca en su país</p>
+    </div>
+
+    <div class="slider-wrap" style="margin-top:1.5rem;position:relative;width:calc(100% + 4rem);margin-left:-2rem;overflow:hidden">
+      <div style="mask:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%);-webkit-mask:linear-gradient(90deg,transparent 0%,#000 5%,#000 95%,transparent 100%)">
+        <div class="slider-track" style="display:flex;gap:.75rem;width:max-content;animation:scrollSlider 25s linear infinite">
+          <img src="12.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="13.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="33.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="34.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="44.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="55.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="66.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="77.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="99.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="222.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <!-- Duplicate for seamless loop -->
+          <img src="12.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="13.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="33.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="34.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="44.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="55.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="66.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="77.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="99.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+          <img src="222.png" alt="" style="width:180px;height:220px;object-fit:cover;border-radius:4px;transition:transform .3s var(--ease)" class="slider-img">
+        </div>
+      </div>
+    </div>
+    <style>
+      @keyframes scrollSlider{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+      .slider-img:hover{transform:scale(1.05)!important;filter:brightness(1.05)}
+      @media(max-width:768px){.slider-track img{width:130px!important;height:170px!important}}
+    </style>
+  </div>
+</section>
+
+
+<!-- ═══ CONTACTO ═══ -->
+<section id="contacto">
+  <div class="section-inner" style="max-width:600px;text-align:center">
+    <span class="tag reveal">¿Te interesó?</span>
+    <h2 class="section-title reveal scramble" style="text-align:center">No te pierdas esta increíble oportunidad</h2>
+    <p class="section-sub reveal" style="margin:0 auto 1.5rem;text-align:center">Contáctanos para recibir más información sobre nuestro modelo de franquicias.</p>
+    <div class="reveal reveal-d1" style="margin-bottom:1rem;padding:1rem;border:1px solid var(--border);background:#faf8f5">
+      <p style="font-size:.85rem;color:#555">📧 franquicias@lapapelaria.com</p>
+    </div>
+    <form class="reveal reveal-d2" onsubmit="handleFormSubmit(event)" style="text-align:left">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem">
+        <input type="text" placeholder="Nombre" required style="padding:.65rem .85rem;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.82rem;outline:none;width:100%;transition:border-color .25s var(--ease),box-shadow .25s var(--ease)" onfocus="this.style.borderColor='#ae2a34';this.style.boxShadow='0 0 0 2px rgba(174,42,52,.1)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
+        <input type="email" placeholder="Email" required style="padding:.65rem .85rem;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.82rem;outline:none;width:100%;transition:border-color .25s var(--ease),box-shadow .25s var(--ease)" onfocus="this.style.borderColor='#ae2a34';this.style.boxShadow='0 0 0 2px rgba(174,42,52,.1)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'">
+      </div>
+      <select style="width:100%;padding:.65rem .85rem;border:1px solid var(--border);font-family:'Inter',sans-serif;font-size:.82rem;outline:none;margin-bottom:.75rem;color:var(--muted)">
+        <option>País de interés</option>
+        <option>Chile</option><option>Uruguay</option><option>Perú</option>
+        <option>México</option><option>Colombia</option><option>Brasil</option>
+      </select>
+      <button type="submit" class="hero-cta" style="width:100%;justify-content:center">Enviar solicitud</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" style="padding:2.5rem">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:2rem;width:auto;margin-bottom:1.25rem;display:block">
+    <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);font-weight:500;margin-bottom:.75rem;line-height:1.3">Somos un equipo de personas apasionados por lo que hacemos</p>
+    <p>Motivados en la búsqueda del producto perfecto para nuestros fanáticos. Nos hemos definido como: <em>"personas comunes y corrientes que quieren hacer cosas extraordinarias y diferentes cada día".</em></p>
+    <p>Estamos muy orgullosos de la forma de cómo hacemos las cosas, nos enriquece la multiculturalidad de nuestros equipos, lo que nos hace lograr una mejor adaptabilidad en cada uno de los mercados donde estamos operando.</p>
+    <p>Somos disciplinados, siempre buscamos hacer el trabajo bien hecho, el respeto y un ambiente de trabajo súper agradable donde nos desarrollamos. Son algunos de los valores que mejor nos identifica.</p>
+    <p style="margin-bottom:0;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--red);font-weight:500">Es nuestra cultura, nuestra forma de hacer las cosas, nuestra forma de vivir la empresa. <strong>Esto somos, somos La Papelaria &amp; Co.</strong></p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="logo.avif" alt="La Papelaria &amp; Co" style="height:1.5rem;width:auto;margin-bottom:.75rem">
+      <p class="desc">La tienda de stationery de diseño más grande de Latinoamérica. 18 años creando experiencias únicas.</p>
+    </div>
+    <div><h4>Secciones</h4><a href="#marca">Marca</a><a href="#franquicia">Franquicia</a><a href="#expansion">Expansión</a><a href="#contacto">Contacto</a></div>
+    <div><h4>Contacto</h4><a href="#">franquicias@lapapelaria.com</a><a href="#">www.lapapelaria.cl</a><a href="#">Santiago, Chile</a></div>
+  </div>
+  <div class="copy">© 2025 La Papelaria &amp; Co · Todos los derechos reservados</div>
+</footer>
+
+<script>
+// MODAL
+function openModal(){document.getElementById('modalOverlay').classList.add('open')}
+function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// FORM SUBMIT
+function handleFormSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type="submit"]');
+  const orig=btn.textContent;
+  btn.textContent='Enviando...';
+  btn.disabled=true;
+  btn.style.opacity='.7';
+  setTimeout(()=>{
+    btn.textContent='✓ Enviado';
+    btn.style.background='#28a745';
+    setTimeout(()=>{
+      btn.textContent=orig;
+      btn.disabled=false;
+      btn.style.opacity='1';
+      btn.style.background='';
+      e.target.reset();
+    },2000);
+  },1200);
+}
+
+// TEXT ROTATION
+(function(){
+  const el=document.getElementById('rotatingText');
+  if(!el)return;
+  const words=['más grande','única','diferente','especial','inspiradora','Latinoamérica'];
+  let idx=0,charIdx=0;
+
+  function typeWord(){
+    const word=words[idx];
+    if(charIdx<word.length){
+      charIdx++;
+      el.textContent=word.slice(0,charIdx);
+      setTimeout(typeWord,80);
+    }else{
+      setTimeout(deleteWord,1500);
+    }
+  }
+
+  function deleteWord(){
+    const word=words[idx];
+    if(charIdx>0){
+      charIdx--;
+      el.textContent=word.slice(0,charIdx);
+      setTimeout(deleteWord,40);
+    }else{
+      idx=(idx+1)%words.length;
+      setTimeout(typeWord,200);
+    }
+  }
+
+  typeWord();
+})();
+
+// PARALLAX FLOATING + SCROLL PARALLAX
+(function(){
+  const container=document.getElementById('heroFloat');
+  if(!container)return;
+  const els=container.querySelectorAll('.float-el');
+  let mx=0,my=0;
+
+  document.addEventListener('mousemove',e=>{
+    mx=(e.clientX/window.innerWidth-.5)*2;
+    my=(e.clientY/window.innerHeight-.5)*2;
+  });
+
+  function animate(){
+    const st=window.scrollY;
+    els.forEach((el,i)=>{
+      const d=(i+1)*.3;
+      const x=mx*d*8;
+      const y=my*d*8;
+      const scrollOffset=st*((i+1)*.03);
+      el.style.transform=`translate3d(${x}px,${y}px,0) translateY(${-scrollOffset}px)`;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+
+// FEE TEXT STAGGER REVEAL
+(function(){
+  const el=document.getElementById('feeText');
+  if(!el)return;
+  const words=el.textContent.split(' ');
+  el.innerHTML=words.map(w=>`<span class="fee-word">${w}</span>`).join(' ');
+  const items=el.querySelectorAll('.fee-word');
+  const obs=new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      items.forEach((w,i)=>setTimeout(()=>w.classList.add('visible'),i*50));
+      obs.disconnect();
+    }
+  },{threshold:.3});
+  obs.observe(el);
+})();
+
+// MAGIC TEXT SCROLL REVEAL
+(function(){
+  const el=document.getElementById('magicQuote');
+  if(!el)return;
+  const quote='"Nuestros productos son únicos. La diferenciación la logramos a través de nuestras marcas propias."';
+  const words=quote.split(' ');
+  el.innerHTML=words.map(w=>`<span class="magic-word">${w}</span>`).join(' ');
+  const wordEls=el.querySelectorAll('.magic-word');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx=Array.from(wordEls).indexOf(e.target);
+        setTimeout(()=>e.target.classList.add('revealed'),idx*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.5});
+  wordEls.forEach(w=>obs.observe(w));
+})();
+
+// TYPEWRITER LINE
+(function(){
+  const el=document.getElementById('typewriterLine');
+  const cursor=document.getElementById('cursorLine');
+  if(!el)return;
+  const text='Estamos muy orgullosos de la forma de cómo hacemos las cosas, nos enriquece la multiculturalidad de nuestros equipos.';
+  let i=0;
+  const obs=new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){
+      const iv=setInterval(()=>{
+        if(i<text.length){el.textContent+=text[i];i++;}
+        else{clearInterval(iv);if(cursor)cursor.style.display='none';obs.disconnect();}
+      },30);
+    }
+  },{threshold:.3});
+  obs.observe(el.parentElement);
+})();
+
+// TEXT SCRAMBLE
+(function(){
+  const c='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  document.querySelectorAll('.scramble').forEach(el=>{
+    el.dataset.text=el.textContent;
+    const obs=new IntersectionObserver(([e])=>{
+      if(e.isIntersecting){
+        const t=e.target,text=t.dataset.text;
+        let s=0;const st=setInterval(()=>{
+          let r='';const p=s/16;
+          for(let i=0;i<text.length;i++){
+            if(text[i]===' '){r+=' ';continue;}
+            r+=p*text.length>i?text[i]:c[Math.floor(Math.random()*c.length)];
+          }
+          t.textContent=r;s++;
+          if(s>16){clearInterval(st);t.textContent=text;obs.disconnect();}
+        },50);
+      }
+    },{threshold:.3});
+    obs.observe(el);
+  });
+})();
+
+// Scroll reveal (all types)
+(function(){
+  const types=['.reveal','.reveal-left','.reveal-right','.reveal-scale','.stagger-children'];
+  types.forEach(sel=>{
+    document.querySelectorAll(sel).forEach(el=>{
+      const obs=new IntersectionObserver(([e])=>{
+        if(e.isIntersecting){e.target.classList.add('visible');obs.disconnect();}
+      },{threshold:.1,margin:'0px 0px -40px 0px'});
+      obs.observe(el);
+    });
+  });
+})();
+</script>
+</body>
+</html>
