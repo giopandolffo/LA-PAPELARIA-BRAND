@@ -93,10 +93,11 @@ h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border)}
 .grid-3>div{padding:2.5rem 2rem;background:var(--bg);text-align:center;transition:all .4s var(--ease);cursor:default}
-.grid-3>div:nth-child(1):hover{background:#85adce;color:#fff}
-.grid-3>div:nth-child(2):hover{background:#9b9163;color:#fff}
-.grid-3>div:nth-child(3):hover{background:#ae2a34;color:#fff}
-.grid-3>div:hover .num,.grid-3>div:hover h3,.grid-3>div:hover p,.grid-3>div:hover .tag-sm{color:#fff!important}
+.grid-3>div:nth-child(1):hover,.grid-3>div:nth-child(1):active{background:#85adce;color:#fff}
+.grid-3>div:nth-child(2):hover,.grid-3>div:nth-child(2):active{background:#9b9163;color:#fff}
+.grid-3>div:nth-child(3):hover,.grid-3>div:nth-child(3):active{background:#ae2a34;color:#fff}
+.grid-3>div:hover .num,.grid-3>div:hover h3,.grid-3>div:hover p,.grid-3>div:hover .tag-sm,
+.grid-3>div:active .num,.grid-3>div:active h3,.grid-3>div:active p,.grid-3>div:active .tag-sm{color:#fff!important}
 .grid-3 .num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--red);line-height:1;margin-bottom:.35rem;font-weight:500}
 .grid-3 h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;color:var(--dark);margin-bottom:.5rem}
 .grid-3 p{font-size:.82rem;color:var(--muted);line-height:1.65}
@@ -108,16 +109,16 @@ h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw
 /* ─── BRANDS ─── */
 .brand-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
 .brand-badge{padding:.35rem .85rem;border:1px solid var(--border);font-size:.78rem;color:var(--muted);transition:all .25s var(--ease);cursor:default}
-.brand-badge:nth-child(4n+1):hover{background:#ae2a34;color:#fff;border-color:#ae2a34}
-.brand-badge:nth-child(4n+2):hover{background:#85adce;color:#fff;border-color:#85adce}
-.brand-badge:nth-child(4n+3):hover{background:#9b9163;color:#fff;border-color:#9b9163}
-.brand-badge:nth-child(4n+4):hover{background:#281414;color:#fff;border-color:#281414}
+.brand-badge:nth-child(4n+1):hover,.brand-badge:nth-child(4n+1):active{background:#ae2a34;color:#fff;border-color:#ae2a34}
+.brand-badge:nth-child(4n+2):hover,.brand-badge:nth-child(4n+2):active{background:#85adce;color:#fff;border-color:#85adce}
+.brand-badge:nth-child(4n+3):hover,.brand-badge:nth-child(4n+3):active{background:#9b9163;color:#fff;border-color:#9b9163}
+.brand-badge:nth-child(4n+4):hover,.brand-badge:nth-child(4n+4):active{background:#281414;color:#fff;border-color:#281414}
 
 .store-card{transition:all .3s var(--ease);cursor:default}
-.store-card:nth-child(1):hover{background:#ae2a34!important;border-color:#ae2a34!important}
-.store-card:nth-child(2):hover{background:#85adce!important;border-color:#85adce!important}
-.store-card:nth-child(3):hover{background:#9b9163!important;border-color:#9b9163!important}
-.store-card:hover p,.store-card:hover .store-label{color:#fff!important}
+.store-card:nth-child(1):hover,.store-card:nth-child(1):active{background:#ae2a34!important;border-color:#ae2a34!important}
+.store-card:nth-child(2):hover,.store-card:nth-child(2):active{background:#85adce!important;border-color:#85adce!important}
+.store-card:nth-child(3):hover,.store-card:nth-child(3):active{background:#9b9163!important;border-color:#9b9163!important}
+.store-card:hover p,.store-card:hover .store-label,.store-card:active p,.store-card:active .store-label{color:#fff!important}
 .brand-badge:hover{border-color:var(--gold);color:var(--text)}
 
 /* ─── NUMBERS ROW ─── */
@@ -132,11 +133,12 @@ h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw
 .c-card{padding:1.25rem;border:1px solid var(--border);transition:all .4s var(--ease);cursor:default}
 select,input,textarea,button{cursor:pointer}
 select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;background-size:12px}
-.c-card:nth-child(1):hover{background:#ae2a34;border-color:#ae2a34;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
-.c-card:nth-child(2):hover{background:#85adce;border-color:#85adce;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
-.c-card:nth-child(3):hover{background:#9b9163;border-color:#9b9163;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
-.c-card:hover .name,.c-card:hover .meta,.c-card:hover .stat,.c-card:hover .stat b{color:#fff!important}
-.c-card:hover .stat{border-top-color:rgba(255,255,255,.2)!important}
+.c-card:nth-child(1):hover,.c-card:nth-child(1):active{background:#ae2a34;border-color:#ae2a34;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:nth-child(2):hover,.c-card:nth-child(2):active{background:#85adce;border-color:#85adce;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:nth-child(3):hover,.c-card:nth-child(3):active{background:#9b9163;border-color:#9b9163;transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.c-card:hover .name,.c-card:hover .meta,.c-card:hover .stat,.c-card:hover .stat b,
+.c-card:active .name,.c-card:active .meta,.c-card:active .stat,.c-card:active .stat b{color:#fff!important}
+.c-card:hover .stat,.c-card:active .stat{border-top-color:rgba(255,255,255,.2)!important}
 .c-card .flag{font-size:1.5rem;display:block;margin-bottom:.25rem}
 .c-card .name{font-size:.9rem;font-weight:500;color:var(--dark)}
 .c-card .meta{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-top:.15rem}
@@ -158,10 +160,10 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 /* ─── VALUES ─── */
 .v-grid{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
 .v-tag{padding:.3rem .85rem;border:1px solid var(--border);font-size:.75rem;color:var(--muted);letter-spacing:.02em;font-family:'Playfair Display',serif;font-style:italic;transition:all .3s;cursor:default}
-.v-tag:nth-child(4n+1):hover{background:#ae2a34;color:#fff;border-color:#ae2a34}
-.v-tag:nth-child(4n+2):hover{background:#85adce;color:#fff;border-color:#85adce}
-.v-tag:nth-child(4n+3):hover{background:#9b9163;color:#fff;border-color:#9b9163}
-.v-tag:nth-child(4n+4):hover{background:#281414;color:#fff;border-color:#281414}
+.v-tag:nth-child(4n+1):hover,.v-tag:nth-child(4n+1):active{background:#ae2a34;color:#fff;border-color:#ae2a34}
+.v-tag:nth-child(4n+2):hover,.v-tag:nth-child(4n+2):active{background:#85adce;color:#fff;border-color:#85adce}
+.v-tag:nth-child(4n+3):hover,.v-tag:nth-child(4n+3):active{background:#9b9163;color:#fff;border-color:#9b9163}
+.v-tag:nth-child(4n+4):hover,.v-tag:nth-child(4n+4):active{background:#281414;color:#fff;border-color:#281414}
 
 /* ─── GALLERY ─── */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
