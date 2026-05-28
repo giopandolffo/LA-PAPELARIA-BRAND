@@ -109,7 +109,7 @@ h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw
 /* ─── BRANDS ─── */
 .brand-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
 .brand-badge{padding:.35rem .85rem;border:1px solid var(--border);font-size:.78rem;color:var(--muted);transition:all .25s var(--ease);cursor:default}
-.brand-badge:nth-child(4n+1):hover,.brand-badge:nth-child(4n+1):active{background:#ae2a34;color:#fff;border-color:#ae2a34}
+.brand-badge:nth-child(4n+1):hover,.brand-badge.mobile-hover,.brand-badge:nth-child(4n+1):active{background:#ae2a34;color:#fff;border-color:#ae2a34}
 .brand-badge:nth-child(4n+2):hover,.brand-badge:nth-child(4n+2):active{background:#85adce;color:#fff;border-color:#85adce}
 .brand-badge:nth-child(4n+3):hover,.brand-badge:nth-child(4n+3):active{background:#9b9163;color:#fff;border-color:#9b9163}
 .brand-badge:nth-child(4n+4):hover,.brand-badge:nth-child(4n+4):active{background:#281414;color:#fff;border-color:#281414}
@@ -631,6 +631,12 @@ function handleFormSubmit(e){
       },{threshold:.1,margin:'0px 0px -40px 0px'});
       obs.observe(el);
     });
+  });
+})();
+// MOBILE ACTIVE FIX
+(function(){
+  document.querySelectorAll('.v-tag,.brand-badge,.store-card,.c-card,.grid-3>div').forEach(el=>{
+    if(!el.getAttribute('onclick'))el.setAttribute('onclick','');
   });
 })();
 </script>
