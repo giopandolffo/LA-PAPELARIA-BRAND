@@ -192,7 +192,7 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 
 /* ─── MAGIC TEXT ─── */
 .magic-text{display:flex;flex-wrap:wrap;gap:.2em .35em;justify-content:center;perspective:400px}
-.magic-word{position:relative;display:inline-block;opacity:0;transform:translateY(8px) rotateX(8deg);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);color:#fff}
+.magic-word{position:relative;display:inline-block;opacity:0;transform:translateY(8px) rotateX(8deg);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);color:#fff;font-family:'Playfair Display',serif;font-style:normal;font-weight:450}
 .magic-word.revealed{opacity:1;transform:translateY(0) rotateX(0)}
 
 /* ─── VALUES ─── */
@@ -214,6 +214,19 @@ select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%
 .cat-item:active{transform:translateY(-1px) scale(.97);transition-duration:.08s}
 .cat-item p{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);transition:color .2s ease}
 .cat-item:hover p{color:#fff}
+
+/* ─── PRODUCTOS SECTION EDITORIAL STYLES ─── */
+.productos-grid .brand-badge{border-radius:2px;padding:.3rem .75rem;font-size:.72rem;letter-spacing:.02em;border:1px solid #e0ddd5;color:#666;background:#faf9f7;transition:all .25s var(--ease-out);cursor:default}
+.productos-grid .brand-badge:nth-child(4n+1):hover,.productos-grid .brand-badge:nth-child(4n+1):active{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-2px)}
+.productos-grid .brand-badge:nth-child(4n+2):hover,.productos-grid .brand-badge:nth-child(4n+2):active{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px)}
+.productos-grid .brand-badge:nth-child(4n+3):hover,.productos-grid .brand-badge:nth-child(4n+3):active{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px)}
+.productos-grid .brand-badge:nth-child(4n+4):hover,.productos-grid .brand-badge:nth-child(4n+4):active{background:var(--dark);color:#fff;border-color:var(--dark);transform:translateY(-2px)}
+.productos-grid .v-tag{border-radius:2px;padding:.3rem .85rem;font-size:.7rem;font-family:'Playfair Display',serif;font-style:italic;border:1px solid #e0ddd5;color:#888;background:#faf9f7;letter-spacing:.03em;transition:all .25s var(--ease-out);cursor:default}
+.productos-grid .v-tag:nth-child(4n+1):hover,.productos-grid .v-tag:nth-child(4n+1):active{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-2px)}
+.productos-grid .v-tag:nth-child(4n+2):hover,.productos-grid .v-tag:nth-child(4n+2):active{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-2px)}
+.productos-grid .v-tag:nth-child(4n+3):hover,.productos-grid .v-tag:nth-child(4n+3):active{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px)}
+.productos-grid .v-tag:nth-child(4n+4):hover,.productos-grid .v-tag:nth-child(4n+4):active{background:var(--dark);color:#fff;border-color:var(--dark);transform:translateY(-2px)}
+@media(max-width:768px){.productos-grid{grid-template-columns:1fr!important;gap:2rem!important}.productos-grid .brand-badges{gap:.3rem!important}.productos-grid .v-tag{font-size:.65rem!important}}
 
 /* ─── MARKET TAG (hover spring) ─── */
 .market-tag{padding:.3rem .7rem;border:1px solid var(--border);font-size:.78rem;color:var(--muted);transition:all .2s var(--ease-out);cursor:default}
@@ -381,87 +394,107 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
     <p class="section-sub reveal">Operamos a través de distintos canales para llegar a cada rincón de Latinoamérica.</p>
 
     <div class="grid-3 reveal stagger-children">
-      <div><div class="num">01</div><span class="tag-sm">Canal</span><h3>B2C</h3><p>Tiendas físicas y canales digitales. Experiencia de compra única y cercana con nuestros clientes.</p></div>
-      <div><div class="num">02</div><span class="tag-sm">Canal</span><h3>B2B</h3><p>Distribución mayorista y ventas corporativas. Soluciones de diseño para empresas.</p></div>
-      <div><div class="num">03</div><span class="tag-sm">Canal</span><h3>Franquicias</h3><p>Expansión internacional de la marca. Llevamos La Papelaria a nuevos mercados.</p></div>
+      <div><div class="num">01</div><span class="tag-sm">Canal</span><h3>B2C</h3><p>Tiendas físicas y canales digitales.</p></div>
+      <div><div class="num">02</div><span class="tag-sm">Canal</span><h3>B2B</h3><p>Distribución mayorista y ventas corporativas.</p></div>
+      <div><div class="num">03</div><span class="tag-sm">Canal</span><h3>Franquicias</h3><p>Expansión internacional de la marca.</p></div>
     </div>
 
-    <!-- VM Quote -->
-    <div class="reveal" style="margin-top:2rem;padding:1.5rem;border:1px solid var(--gold);background:#faf8f5;text-align:center;transition:transform .35s var(--ease-spring),box-shadow .35s var(--ease-out);cursor:default">
-      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--dark);line-height:1.5">"Somos un equipo de personas apasionados por lo que hacemos."</p>
-    </div>
+    <!-- FORMATOS DE TIENDA (estilo editorial) -->
+    <div class="reveal" style="margin-top:3rem">
 
-    <!-- Formatos de tienda -->
-    <div style="margin-top:2.5rem">
-      <p style="font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;color:#999;font-weight:500;margin-bottom:1.25rem;text-align:center">Formatos de Tienda</p>
-      <div class="store-formats-grid reveal stagger-children" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden">
-        <div class="store-format-card" style="background:var(--bg);padding:2rem 1.25rem;text-align:center;cursor:default">
-          <div class="format-icon" style="width:48px;height:48px;border-radius:12px;background:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.25rem;color:#fff">🏪</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--dark);margin-bottom:.35rem">Stand Alone</h4>
-          <p style="font-size:.78rem;color:var(--muted);line-height:1.55">Tienda propia con identidad completa. El formato insignia de la marca.</p>
-        </div>
-        <div class="store-format-card" style="background:var(--bg);padding:2rem 1.25rem;text-align:center;cursor:default">
-          <div class="format-icon" style="width:48px;height:48px;border-radius:12px;background:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.25rem;color:#fff">🛍️</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--dark);margin-bottom:.35rem">Corner</h4>
-          <p style="font-size:.78rem;color:var(--muted);line-height:1.55">Shop in Shop dentro de centros comerciales y grandes tiendas.</p>
-        </div>
-        <div class="store-format-card" style="background:var(--bg);padding:2rem 1.25rem;text-align:center;cursor:default">
-          <div class="format-icon" style="width:48px;height:48px;border-radius:12px;background:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.25rem;color:#fff">📦</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;color:var(--dark);margin-bottom:.35rem">Islas</h4>
-          <p style="font-size:.78rem;color:var(--muted);line-height:1.55">Kioskos de alto tráfico. Máxima exposición en espacios reducidos.</p>
+      <h3 class="formatos-heading" style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem;text-align:center">Formatos de Tienda:</h3>
+
+      <div style="max-width:500px;margin:0 auto">
+        <ul class="formatos-lista" style="list-style:none;padding:0;margin:0 0 2.5rem;text-align:center">
+          <li style="font-size:1rem;font-weight:500;color:#333;padding:.4rem 0;position:relative;display:inline-flex;align-items:center;gap:.5rem">
+            <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block"></span> Tiendas Stand Alone
+          </li>
+          <li style="font-size:1rem;font-weight:500;color:#333;padding:.4rem 0;display:inline-flex;align-items:center;gap:.5rem">
+            <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block"></span> Corners (Shop in Shop)
+          </li>
+          <li style="font-size:1rem;font-weight:500;color:#333;padding:.4rem 0;display:inline-flex;align-items:center;gap:.5rem">
+            <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block"></span> Islas (Kioskos)
+          </li>
+          <li style="font-size:1rem;font-weight:500;color:#333;padding:.4rem 0;display:inline-flex;align-items:center;gap:.5rem">
+            <span style="width:5px;height:5px;border-radius:50%;background:#555;display:inline-block"></span> Canal Digital: E-commerce y Aplicaciones digitales
+          </li>
+        </ul>
+      </div>
+
+      <!-- CITA CENTRAL DESTACADA -->
+      <div class="reveal reveal-d1" style="max-width:720px;margin:0 auto 2.5rem;text-align:center;padding:2rem 2.5rem;border:1px solid #e0ddd5;background:#faf9f7">
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.4vw,2rem);color:var(--dark);line-height:1.45;letter-spacing:-.01em">
+          «Nuestro gran diferencial es el <span style="color:var(--red);font-style:italic;font-weight:500">Visual Merchandising</span>. Cuidamos que todo se vea perfecto. Las tiendas <span style="color:var(--red);font-style:italic;font-weight:500">enamoran</span> por sí solas.»
+        </p>
+      </div>
+
+      <!-- PRÓXIMOS MERCADOS -->
+      <div class="reveal reveal-d2" style="text-align:center">
+        <p style="font-size:.75rem;font-weight:600;color:#444;letter-spacing:.04em;margin-bottom:.5rem">Próximos mercados:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.35rem .65rem;justify-content:center;font-size:.85rem;color:#555">
+          <span>Colombia</span><span style="color:#ccc">·</span>
+          <span>México</span><span style="color:#ccc">·</span>
+          <span>Brasil</span><span style="color:#ccc">·</span>
+          <span>Argentina</span><span style="color:#ccc">·</span>
+          <span>Paraguay</span><span style="color:#ccc">·</span>
+          <span>Costa Rica</span>
         </div>
       </div>
+
     </div>
 
-    <!-- E-commerce -->
-    <div class="reveal" style="margin-top:1.25rem;text-align:center;padding:.85rem 1rem;border:1px solid var(--border);background:var(--bg);border-radius:6px;transition:all .3s var(--ease-out)">
-      <p style="font-size:.78rem;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:.5rem">
-        <span style="font-size:1.1rem">📱</span>
-        <span style="font-weight:500">Canal Digital:</span> E-commerce y aplicaciones digitales
-      </p>
-    </div>
   </div>
 </section>
 
-<!-- ═══ SEC 05: MARCAS ═══ -->
-<section id="marcas">
+<!-- ═══ SEC 05: NUESTROS PRODUCTOS ═══ -->
+<section id="marcas" style="padding:5rem 2rem 3rem">
   <div class="section-inner">
     <span class="tag reveal">Nuestros Productos</span>
-    <h2 class="section-title reveal scramble">Las mejores marcas de stationery las tiene La Papelaria</h2>
-    <div class="grid-2" style="margin-top:1rem">
+
+    <div class="productos-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:1.5rem;align-items:start">
+
+      <!-- COLUMNA IZQUIERDA: MARCAS INTERNACIONALES -->
       <div class="reveal">
-        <p style="font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Internacionales</p>
+        <h3 class="productos-heading" style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.1;font-weight:500;margin-bottom:.15rem">
+          <span style="color:var(--red)">45+</span>
+          <span style="color:var(--dark)"> marcas</span>
+          <span style="color:var(--gold)"> internacionales</span>
+        </h3>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.25rem;letter-spacing:.02em">de EE.UU., Alemania, Italia, España y UK.</p>
         <div class="brand-badges stagger-children" id="intlBrands">
           <span class="brand-badge">Ban.do</span><span class="brand-badge">Rifle Paper Co</span><span class="brand-badge">Leuchtturm 1917</span>
           <span class="brand-badge">Studio OH</span><span class="brand-badge">Peter Pauper Press</span><span class="brand-badge">Graphique D'France</span>
           <span class="brand-badge">Legami Milano</span><span class="brand-badge">Happy Planner</span><span class="brand-badge">Waste Not Paper</span>
           <span class="brand-badge" style="border-color:#ddd;color:#ccc;font-style:italic">y muchas más...</span>
         </div>
-        <p style="font-size:.65rem;color:#bbb;margin-top:.5rem;letter-spacing:.06em;text-transform:uppercase">EE.UU · Alemania · Italia · España · UK</p>
       </div>
+
+      <!-- COLUMNA DERECHA: MARCAS PROPIAS -->
       <div class="reveal reveal-d1">
-        <p style="font-size:.85rem;font-weight:600;color:var(--dark);margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Marcas Propias</p>
-        <p style="font-size:.78rem;color:var(--muted);margin-bottom:.75rem">Desarrollo de colecciones exclusivas inspiradas en las últimas tendencias. Diseño exclusivo, márgenes optimizados. Ya en Chile, Perú y Uruguay.</p>
-        <div class="stagger-children" id="ownBrands" style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
-          <div style="border:1px solid var(--border);padding:.85rem;transition:transform .25s var(--ease-spring),box-shadow .25s ease;cursor:default">
-            <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Propia</span>
-            <p style="font-size:1rem;font-weight:500;color:var(--dark)">Tangerine</p>
-          </div>
-          <div style="border:1px solid var(--border);padding:.85rem;transition:transform .25s var(--ease-spring),box-shadow .25s ease;cursor:default">
-            <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Propia</span>
-            <p style="font-size:1rem;font-weight:500;color:var(--dark)">Yay! Paper</p>
-          </div>
-          <div style="border:1px solid var(--border);padding:.85rem;transition:transform .25s var(--ease-spring),box-shadow .25s ease;cursor:default">
-            <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--blue);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Propia</span>
-            <p style="font-size:1rem;font-weight:500;color:var(--dark)">POPink</p>
-          </div>
-          <div style="border:1px solid var(--border);padding:.85rem;transition:transform .25s var(--ease-spring),box-shadow .25s ease;cursor:default">
-            <span style="font-size:.55rem;padding:.15rem .5rem;background:var(--blue);color:#fff;text-transform:uppercase;letter-spacing:.1em;display:inline-block;margin-bottom:.35rem">Propia</span>
-            <p style="font-size:1rem;font-weight:500;color:var(--dark)">Papermark</p>
-          </div>
+        <h3 class="productos-heading" style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.1;font-weight:500;margin-bottom:.85rem">
+          <span style="color:var(--blue)">marcas</span>
+          <span style="color:var(--red)"> propias</span>
+        </h3>
+        <p style="font-size:.82rem;color:#555;line-height:1.7;margin-bottom:1rem">
+          Desarrollo de colecciones exclusivas inspiradas en las últimas tendencias como <strong style="color:var(--dark);font-weight:500">Tangerine</strong>, <strong style="color:var(--dark);font-weight:500">Yay! Paper</strong>, <strong style="color:var(--dark);font-weight:500">POPink</strong> y <strong style="color:var(--dark);font-weight:500">Papermark</strong>. Diseño exclusivo, márgenes optimizados. Ya en Chile, Perú y Uruguay.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+          <span class="v-tag">Tangerine</span>
+          <span class="v-tag">Yay! Paper</span>
+          <span class="v-tag">POPink</span>
+          <span class="v-tag">Papermark</span>
         </div>
       </div>
+
     </div>
+
+    <!-- TEXTO DESCRIPTIVO CENTRAL -->
+    <div class="reveal reveal-d2" style="max-width:720px;margin:2.5rem auto 0;text-align:center;padding-top:2rem;border-top:1px solid var(--border)">
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(0.95rem,1.3vw,1.15rem);color:#444;line-height:1.6;font-style:italic">
+        «Nuestro catálogo se enfoca exclusivamente en el diseño y la originalidad, ofreciendo una cuidada selección de agendas, tarjetas, álbumes, tazas de colección, lápices, estuches y bolsas de regalo.»
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -470,7 +503,7 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
   <img class="bg" src="banner-quote.png" alt="Ambiente de tienda La Papelaria">
   <div class="overlay"></div>
   <div style="position:relative;z-index:2;height:100%;display:flex;align-items:center;padding:0 2rem;max-width:700px;margin:0 auto">
-    <p class="magic-text" id="magicQuote" style="font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.5vw,2rem);color:#fff;font-style:italic;line-height:1.3;padding:0 1rem;text-shadow:0 2px 8px rgba(0,0,0,.3)"></p>
+    <p class="magic-text" id="magicQuote" style="font-family:'Playfair Display',serif;font-size:clamp(1.35rem,2.8vw,2.2rem);color:#fff;font-style:normal;font-weight:450;line-height:1.4;padding:0 1rem;text-shadow:0 2px 12px rgba(0,0,0,.4);letter-spacing:.02em"></p>
   </div>
 </div>
 
@@ -479,7 +512,7 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
   <div class="section-inner">
     <span class="tag reveal">04 · Franquicias</span>
     <h2 class="section-title reveal scramble">Un modelo exitoso, listo para ser implementado en tu mercado</h2>
-    <p class="section-sub reveal">Un modelo probado en 3 países. Marca líder y referente en su nicho. Productos no perecederos, control de stock sin producción. Acceso a buenos márgenes.</p>
+    <p class="section-sub reveal">La Papelaria &amp; Co es la tienda líder y referente en la venta de productos de diseño para regalar a alguien especial o para uno mismo. Con una propuesta basada en el Stationary, transformando objetos cotidianos en momentos especiales.</p>
 
     <div class="grid-3 reveal stagger-children">
       <div><div class="num">01</div><span class="tag-sm">La Propuesta</span><h3>Negocio Probado</h3><p>Operando en 3 países. Marca líder y referente en su nicho. Modelo fácil de adaptar a mercados.</p></div>
@@ -487,8 +520,8 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
       <div><div class="num">03</div><span class="tag-sm">El Negocio</span><h3>Soporte Total</h3><p>Entrenamiento inicial y permanente. Mix definido por central. Artes para publicidad digital y física. Instructivos VM.</p></div>
     </div>
 
-    <div class="reveal" style="margin-top:1.5rem;padding:1rem;border:1px solid var(--gold);background:#faf8f5">
-      <p style="font-size:.8rem;color:#555;line-height:1.6;display:flex;flex-wrap:wrap;gap:.2em" id="feeText"><strong>Modelo de inversión:</strong> El modelo de inversión se adapta al potencial de cada territorio. Queremos conocerte. Contáctanos y construyamos juntos la hoja de ruta.</p>
+    <div class="reveal" style="margin-top:1.5rem;padding:1.25rem;border:1px solid var(--gold);background:#faf8f5;text-align:center">
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1rem,1.5vw,1.25rem);color:var(--dark);line-height:1.5;font-weight:600" id="feeText">Una empresa que opera tiendas propias y franquicias en la región.</p>
     </div>
   </div>
 </section>
@@ -501,7 +534,7 @@ footer .copy{text-align:center;font-size:.65rem;color:#ccc;padding-top:1.25rem;b
     <div class="c-grid reveal stagger-children" style="margin-top:.5rem">
       <div class="c-card"><span class="flag">🇨🇱</span><div class="name">Chile</div><div class="meta">Operación Propia</div><div class="stat"><span>27 tiendas</span><b>18 años</b></div></div>
       <div class="c-card"><span class="flag">🇺🇾</span><div class="name">Uruguay</div><div class="meta">Franquicia (Mosca)</div><div class="stat"><span>33 tiendas</span><b>+10 años</b></div></div>
-      <div class="c-card"><span class="flag">🇵🇪</span><div class="name">Perú</div><div class="meta">Operación Propia</div><div class="stat"><span>3 tiendas</span><b>1 año</b></div></div>
+      <div class="c-card"><span class="flag">🇵🇪</span><div class="name">Perú</div><div class="meta">Franquicia</div><div class="stat"><span>3 tiendas</span><b>2 años</b></div></div>
     </div>
 
     <!-- Próximos mercados -->
